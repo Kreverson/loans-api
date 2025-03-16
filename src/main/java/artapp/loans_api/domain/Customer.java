@@ -34,4 +34,8 @@ public class Customer {
     public boolean isLocationEqualThan(String value) {
         return this.location.equalsIgnoreCase(value);
     }
+
+    public boolean isIncomeEqualOrUpperThan(BigDecimal value) {
+        return this.income.equals(value) || this.income.compareTo(value) > 0;
+    }
 }

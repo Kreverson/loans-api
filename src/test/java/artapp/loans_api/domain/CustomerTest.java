@@ -135,4 +135,32 @@ class CustomerTest {
             assertFalse(customer.isLocationEqualThan("SP"));
         }
     }
+
+    @Nested
+    class isIncomeEqualOrUpperThan {
+
+        @Test
+        void shouldBeTrueWhenIncomeIsEqualThanValue() {
+            Customer customer = CustomerFactory.build(BigDecimal.valueOf(3000));
+
+            assertTrue(customer.isIncomeEqualOrUpperThan(BigDecimal.valueOf(3000)));
+
+        }
+
+        @Test
+        void shouldBeTrueWhenIncomeIsUpperThanValue() {
+            Customer customer = CustomerFactory.build(BigDecimal.valueOf(3000));
+
+            assertTrue(customer.isIncomeEqualOrUpperThan(BigDecimal.valueOf(2000)));
+
+        }
+
+        @Test
+        void shouldBeFalseWhenIncomeIsLowerThanValue() {
+            Customer customer = CustomerFactory.build(BigDecimal.valueOf(4000));
+
+            assertFalse(customer.isIncomeEqualOrUpperThan(BigDecimal.valueOf(5000)));
+
+        }
+    }
 }
