@@ -30,4 +30,8 @@ public class Customer {
     public boolean isAgeLowerThan(Integer value) {
         return this.age < value;
     }
+
+    public boolean isLocationEqualThan(String value) {
+        return this.location.equalsIgnoreCase(value);
+    }
 }

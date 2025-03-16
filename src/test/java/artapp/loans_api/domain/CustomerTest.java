@@ -103,4 +103,36 @@ class CustomerTest {
             assertFalse(customer.isAgeLowerThan(25));
         }
     }
+
+    @Nested
+    class IsLocationEqualThan {
+
+        @Test
+        void shouldBeTrueWhenLocationIsEqualThan() {
+            Customer customer = CustomerFactory.build("SP");
+
+            assertTrue(customer.isLocationEqualThan("SP"));
+        }
+
+        @Test
+        void shouldBeTrueWhenLocationIsEqualEvenUpperCaseThan() {
+            Customer customer = CustomerFactory.build("sp");
+
+            assertTrue(customer.isLocationEqualThan("SP"));
+        }
+
+        @Test
+        void shouldBeFalseWhenLocationIsNotEqualEvenUpperCaseThan() {
+            Customer customer = CustomerFactory.build("rj");
+
+            assertFalse(customer.isLocationEqualThan("SP"));
+        }
+
+        @Test
+        void shouldBeFalseWhenLocationIsEqualThan() {
+            Customer customer = CustomerFactory.build("RJ");
+
+            assertFalse(customer.isLocationEqualThan("SP"));
+        }
+    }
 }
