@@ -78,4 +78,29 @@ class CustomerTest {
             assertFalse(customer.isIncomeBetweenThan(BigDecimal.valueOf(2000), BigDecimal.valueOf(4000)));
         }
     }
+
+    @Nested
+    class IsAgeLowerThan {
+
+        @Test
+        void shouldBeTrueWhenAgeIsLowerThan() {
+            Customer customer = CustomerFactory.build(25);
+
+            assertTrue(customer.isAgeLowerThan(30));
+        }
+
+        @Test
+        void shouldBeFalseWhenAgeIsUpperThan() {
+            Customer customer = CustomerFactory.build(25);
+
+            assertFalse(customer.isAgeLowerThan(20));
+        }
+
+        @Test
+        void shouldBeFalseWhenAgeIsEqualThan() {
+            Customer customer = CustomerFactory.build(25);
+
+            assertFalse(customer.isAgeLowerThan(25));
+        }
+    }
 }

@@ -26,4 +26,8 @@ public class Customer {
         return (this.income.equals(max) || this.income.compareTo(max) < 0)
                 && (this.income.equals(min) || this.income.compareTo(min) > 0);
     }
+
+    public boolean isAgeLowerThan(Integer value) {
+        return this.age < value;
+    }
 }
