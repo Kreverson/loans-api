@@ -39,4 +39,43 @@ class CustomerTest {
 
         }
     }
+
+    @Nested
+    class IsIncomeBetweenThan {
+
+        @Test
+        void shouldBeTrueWhenIncomeIsBetweenThan() {
+            Customer customer = CustomerFactory.build(BigDecimal.valueOf(3000));
+
+            assertTrue(customer.isIncomeBetweenThan(BigDecimal.valueOf(2000), BigDecimal.valueOf(4000)));
+        }
+
+        @Test
+        void shouldBeTrueWhenIncomeIsMinInBetweenThan() {
+            Customer customer = CustomerFactory.build(BigDecimal.valueOf(2000));
+
+            assertTrue(customer.isIncomeBetweenThan(BigDecimal.valueOf(2000), BigDecimal.valueOf(4000)));
+        }
+
+        @Test
+        void shouldBeTrueWhenIncomeIsMaxInBetweenThan() {
+            Customer customer = CustomerFactory.build(BigDecimal.valueOf(4000));
+
+            assertTrue(customer.isIncomeBetweenThan(BigDecimal.valueOf(2000), BigDecimal.valueOf(4000)));
+        }
+
+        @Test
+        void shouldBeFalseWhenIncomeIsUpperTheBetweenThan() {
+            Customer customer = CustomerFactory.build(BigDecimal.valueOf(4000.01));
+
+            assertFalse(customer.isIncomeBetweenThan(BigDecimal.valueOf(2000), BigDecimal.valueOf(4000)));
+        }
+
+        @Test
+        void shouldBeFalseWhenIncomeIsLowerTheBetweenThan() {
+            Customer customer = CustomerFactory.build(BigDecimal.valueOf(1999.99));
+
+            assertFalse(customer.isIncomeBetweenThan(BigDecimal.valueOf(2000), BigDecimal.valueOf(4000)));
+        }
+    }
 }
